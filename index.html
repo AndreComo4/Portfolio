@@ -1,33 +1,264 @@
 <!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La mia prima pagina</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            background-color: #f0f0f0;
-            text-align: center;
-            padding: 50px;
-        }
-        h1 {
-            color: #333;
-        }
-    </style>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio Website</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  </head>
+  <body>
 
-    <h1>Ciao, Mondo!</h1>
-    <p>Questo è un esempio di struttura HTML di base.</p>
-    
-    <button onclick="saluta()">Cliccami!</button>
+        <header class="header">
+          <a href="#home" class="logo">
+            Andrea <span>Comolli</span>
+          </a>
 
-    <script>
-        function saluta() {
-            alert("Hai cliccato il pulsante! Questo è JavaScript.");
-        }
-    </script>
+          <i class="bx bx-menu" id="menu-icon"></i>
 
-</body>
+          <nav class="navbar">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+          </nav>
+
+          <button id="contactBtn" class="gradient-btn">Contact Me</button>
+
+        </header>
+
+        <section class="home" id="home">
+          <div class="home-content">
+            <h1>Hi, It's <span>Andrea</span></h1>
+            <h3>
+              i'm <span>a coputer science student</span>
+            </h3>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+              when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+              It has survived not only five centuries, but also the leap into electronic typesetting, 
+              remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+              sheets containing Lorem Ipsum passages, and more recently with desktop publishing software 
+              like Aldus PageMaker including versions of Lorem Ipsum.</p>
+              
+              <div class="social-icons">
+                <a href="https://github.com/AndreComo4" target="_blank">
+                  <i class="bx bxl-github"></i>
+                </a>
+
+                <a href="https://www.linkedin.com/in/andrea-comolli-136519273" target="_blank">
+                  <i class="bx bxl-linkedin-square"></i>
+                </a>
+
+                <a href="https://www.instagram.com/_andrea.comolli_" target="_blank">
+                  <i class="bx bxl-instagram-alt"></i>
+                </a>
+              </div>
+
+              <div class="btn-group">
+                <a href="CV_Andrea_Comolli.pdf" download="CV_Andrea_Comolli.pdf" class="btn">Download CV</a>
+                <a href="#contact" class="btn">Contact</a>
+              </div>
+          </div>
+
+          <div class="home-img">
+                <img src="img/imgProfilo.jpeg" alt="">
+              </div>
+        </section>
+
+        <section class="about" id="about">
+          <div class="about-img">
+            <img src="img/imgProfilo.jpeg" alt="Foto di Andrea Comolli">
+          </div>
+
+          <div class="about-content">
+            <h2>About <span>Me</span></h2>
+            
+            <p class="about-desc">
+              Sono Andrea, uno studente di informatica appassionato di tecnologia e sviluppo software. 
+              Il mio obiettivo è trasformare problemi complessi in soluzioni digitali intuitive ed efficienti, 
+              continuando a imparare e migliorare le mie competenze ogni giorno.
+            </p>
+
+            <div class="education-timeline">
+              
+              <div class="timeline-item">
+                <i class='bx bxs-graduation'></i>
+                <div class="timeline-content">
+                  <h3>Laurea in Informatica (In corso)</h3>
+                  <p>Università degli studi di Milano - [set 2023] / [In corso]</p>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <i class='bx bxs-book-alt'></i>
+                <div class="timeline-content">
+                  <h3>Diploma di [Perito Informatico]</h3>
+                  <p>IIS L.Cobianchi - [2018] / [2023]</p>
+                </div>
+              </div>
+
+            </div>
+
+            <a href="#projects" class="btn">Guarda i miei progetti</a>
+          </div>
+        </section>
+
+        <section class="skills" id="skills">
+          <h2 class="heading">My <span>skills</span></h2>
+
+          <div class="skills-container">
+            
+            <div class="skill-box">
+              <div class="skill-info">
+                <i class="bx bx-code"></i>
+                <h4>Sviluppo Frontend</h4>
+                <p>Creazione di interfacce web responsive e accessibili.</p>
+                <ul class="skill-list">
+                  <li>HTML5 & CSS3</li>
+                  <li>JavaScript (ES6+)</li>
+                  <li>[Inserisci un framework se lo conosci, es. React.js]</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="skill-box">
+              <div class="skill-info">
+                <i class="bx bx-code-curly"></i>
+                <h4>Sviluppo Backend</h4>
+                <p>Costruzione della logica lato server e gestione dei database.</p>
+                <ul class="skill-list">
+                  <li>[Es. Java / Python / Node.js]</li>
+                  <li>[Es. Database SQL (MySQL, PostgreSQL)]</li>
+                  <li>[Es. Sviluppo API REST]</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="skill-box">
+              <div class="skill-info">
+                <i class="bx bxl-figma"></i>
+                <h4>Strumenti & Design</h4>
+                <p>Tool essenziali per il flusso di lavoro e la prototipazione.</p>
+                <ul class="skill-list">
+                  <li>Git & GitHub</li>
+                  <li>Figma (Prototipazione UI)</li>
+                  <li>[Es. Docker / Linux base]</li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <section class="projects" id="projects">
+          <h2 class="heading">My <span>Projects</span></h2>
+
+          <div class="projects-wrapper">
+            <button class="scroll-btn left" id="scroll-left">
+              <i class='bx bx-chevron-left'></i>
+            </button>
+            
+            <div class="projects-box" id="github-projects">
+              <p>Caricamento progetti...</p>
+            </div>
+
+            <button class="scroll-btn right" id="scroll-right">
+              <i class='bx bx-chevron-right'></i>
+            </button>
+          </div>
+        </section>
+
+        <section class="contact" id="contact">
+          <h2 class="heading">Contact <span>Me</span></h2>
+
+          <div class="contact-container">
+            
+            <div class="contact-info">
+              <h3>Costruiamo qualcosa insieme!</h3>
+              <p>Attualmente sono alla ricerca di nuove opportunità. Che tu abbia una proposta lavorativa, una domanda su un progetto o voglia semplicemente fare rete, non esitare a scrivermi.</p>
+
+              <div class="info-item">
+                <i class='bx bx-envelope'></i>
+                <div>
+                  <h4>Email</h4>
+                  <p>info@andreacomolli.it</p>
+                </div>
+              </div>
+
+              <div class="info-item">
+                <i class='bx bx-map'></i>
+                <div>
+                  <h4>Location</h4>
+                  <p>Varese, Italy</p>
+                </div>
+              </div>
+            </div>
+
+            <form id="contactForm" class="contact-form">
+              <div class="input-group">
+                <div class="input-box">
+                  <input type="text" id="nomeInput" placeholder="Nome Completo" required>
+                  <input type="email" id="emailInput" placeholder="Indirizzo Email" required>
+                </div>
+                <div class="input-box">
+                  <input type="text" id="oggettoInput" placeholder="Oggetto del messaggio" required>
+                </div>
+              </div>
+              
+              <div class="input-group-2">
+                <textarea id="messaggioInput" placeholder="Scrivi qui il tuo messaggio..." cols="30" rows="6" required></textarea>
+                <input type="submit" value="Invia Messaggio" class="btn">
+              </div>
+            </form>
+
+          </div>
+        </section>
+
+        <footer class="footer">
+          <div class="social-icons">
+                <a href="https://github.com/AndreComo4" target="_blank">
+                  <i class="bx bxl-github"></i>
+                </a>
+
+                <a href="https://www.linkedin.com/in/andrea-comolli-136519273" target="_blank">
+                  <i class="bx bxl-linkedin-square"></i>
+                </a>
+
+                <a href="https://www.instagram.com/_andrea.comolli_" target="_blank">
+                  <i class="bx bxl-instagram-alt"></i>
+                </a>
+              </div>
+
+              <ul class="list">
+                <li>
+                  <a href="#">FAQ</a>
+                </li>
+
+                <li>
+                  <a href="#skills">Skills</a>
+                </li>
+
+                <li>
+                  <a href="#about">About</a>
+                </li>
+
+                <li>
+                  <a href="#projects">Projects</a>
+                </li>
+
+                <li>
+                  <a href="#contact">Contact</a>
+                </li>
+              </ul>
+
+              <p class="copyright">
+                &copy; <span id="current-year"></span> Andrea Comolli | All Right Reserved
+              </p>
+        </footer>
+
+    <script src="script.js"></script>
+  </body>
 </html>
