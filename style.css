@@ -12,6 +12,10 @@
   --text-color: #f8fafc;
   --main-color: #38bdf8;
 }
+:focus-visible {
+  outline: 3px solid var(--main-color);
+  outline-offset: 4px;
+}
 html {
   font-size: 60%;
   overflow-x: hidden;
@@ -19,6 +23,8 @@ html {
 body {
   background-color: var(--bg-color); 
   color: var(--text-color); 
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 .header{
   position: fixed;
@@ -34,6 +40,96 @@ body {
   backdrop-filter: blur(10px); 
   -webkit-backdrop-filter: blur(10px);
 }
+
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.lang-switch a {
+  color: var(--text-color);
+  opacity: 0.5;
+  transition: 0.3s;
+}
+
+.lang-switch a.active, 
+.lang-switch a:hover {
+  opacity: 1;
+  color: var(--main-color);
+}
+
+.lang-switch span {
+  color: var(--text-color);
+  opacity: 0.3;
+  background: none; 
+  -webkit-text-fill-color: initial; 
+}
+
+@media (max-width: 1285px) {
+  .header {
+      padding: 2rem 5%;
+  }
+
+  #menu-icon {
+      display: block;
+      cursor: pointer;
+      order: 3;
+  }
+
+  .header-right {
+      order: 2;
+      gap: 2rem;
+      margin-right: 2.5rem;
+  }
+  .header-right .gradient-btn {
+      display:none; 
+  }
+}
+
+@media (max-width: 768px) {
+  .lang-switch {
+      background: rgba(56, 189, 248, 0.1);
+      padding: 0.5rem 1.2rem;
+      border-radius: 2rem;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+  }
+
+  .lang-switch a {
+      font-size: 1.4rem;
+  }
+
+  .lang-switch a.active {
+      text-shadow: 0 0 8px var(--main-color);
+  }
+}
+
+@media (max-width: 450px) {
+  .header-right {
+    gap: 1rem;
+  }
+  
+  .lang-switch {
+    font-size: 1.4rem;
+  }
+
+  .gradient-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 1.6rem;
+  }
+}
+
+
 #menu-icon{
   font-size: 3.5rem;
   color: var(--main-color);
@@ -47,6 +143,11 @@ body {
 }
 .logo:hover{
   transform: scale(1.1);
+}
+@media (max-width: 1285px) {
+    .logo {
+        flex: 1;
+    }
 }
 span{
   background: linear-gradient(270deg, #0284c7 10%, #38bdf8 100%);
@@ -140,7 +241,7 @@ section{
   box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
 }
 .btn-group{
-  display: inline-block;
+  display: flex;
   gap: 1.5rem;
 }
 .btn{
