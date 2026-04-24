@@ -14,13 +14,34 @@ navLinks.forEach(link => {
 document.getElementById('contactBtn').onclick = () => {
     location.href = "#contact";
 };
+
+const currentLang = document.documentElement.lang === 'en' ? 'en' : 'it';
+
+const testit = {
+    fallbackDesc: currentLang === 'en' 
+        ? "A project currently in development. Click the repository to explore the source code." 
+        : "Un progetto in fase di sviluppo. Clicca sul repository per esplorare il codice sorgente.",
+    btnRepo: currentLang === 'en' ? "View Repository" : "Vedi Repository",
+    moreTitle: currentLang === 'en' ? "View all projects" : "Vedi tutti i progetti",
+    moreDesc: currentLang === 'en' 
+        ? "Want to explore the rest of my code? Visit my full GitHub profile." 
+        : "Vuoi esplorare il resto del mio codice? Visita il mio profilo completo su GitHub.",
+    btnProfile: currentLang === 'en' ? "Go to Profile" : "Vai al Profilo",
+    emailName: currentLang === 'en' ? "Name" : "Nome",
+    emailContact: currentLang === 'en' ? "Contact Email" : "Email di contatto",
+    emailMsg: currentLang === 'en' ? "Message" : "Messaggio"
+};
+
 const projectsContainer = document.getElementById('github-projects');
 async function fetchGitHubRepos() {
     try {
         const response = await fetch('https://api.github.com/users/AndreComo4/repos?sort=updated');
         const repos = await response.json();
         const projectsContainer = document.getElementById('github-projects');
+        
+        if(!projectsContainer) return;
         projectsContainer.innerHTML = '';
+        
         repos.forEach(repo => {
             if (repo.name.toLowerCase() === 'andrecomo4') return;
             const card = document.createElement('div');
@@ -34,28 +55,30 @@ async function fetchGitHubRepos() {
                         ${techTag}
                     </div>
                     <h3>${cleanName}</h3>
-                    <p>${repo.description || "Un progetto in fase di sviluppo. Clicca sul repository per esplorare il codice sorgente."}</p>
+                    <p>${repo.description || testit.fallbackDesc}</p> 
                 </div>
-                <a href="${repo.html_url}" target="_blank" class="btn">Vedi Repository</a>
+                <a href="${repo.html_url}" target="_blank" class="btn">${testit.btnRepo}</a>
             `;
             projectsContainer.appendChild(card);
         });
+        
         const moreCard = document.createElement('div');
         moreCard.className = 'projects-card github-more-card';
         moreCard.innerHTML = `
             <div class="card-content" style="text-align: center;">
                 <i class='bx bxl-github' style="font-size: 8rem; margin-bottom: 2rem; color: var(--main-color); filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.5));"></i>
-                <h3>Vedi tutti i progetti</h3>
-                <p>Vuoi esplorare il resto del mio codice? Visita il mio profilo completo su GitHub.</p>
+                <h3>${testit.moreTitle}</h3>
+                <p>${testit.moreDesc}</p>
             </div>
-            <a href="https://github.com/AndreComo4" target="_blank" class="btn">Vai al Profilo</a>
+            <a href="https://github.com/AndreComo4" target="_blank" class="btn">${testit.btnProfile}</a>
         `;
         projectsContainer.appendChild(moreCard);
     } catch (error) {
-        console.error("Errore:", error);
+        console.error("Error fetching GitHub repos:", error);
     }
 }
 fetchGitHubRepos();
+
 const projectsBox = document.getElementById('github-projects');
 const btnLeft = document.getElementById('scroll-left');
 const btnRight = document.getElementById('scroll-right');
@@ -68,6 +91,7 @@ if (btnRight && btnLeft && projectsBox) {
         projectsBox.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
     };
 }
+
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', function(event) {
@@ -76,9 +100,15 @@ if (contactForm) {
         const email = document.getElementById('emailInput').value;
         const oggetto = document.getElementById('oggettoInput').value;
         const messaggio = document.getElementById('messaggioInput').value;
-        const corpoEmail = `Nome: ${nome}\nEmail di contatto: ${email}\n\nMessaggio:\n${messaggio}`;
+        
+        const corpoEmail = `${testit.emailName}: ${nome}\n${testit.emailContact}: ${email}\n\n${testit.emailMsg}:\n${messaggio}`;
+        
         const mailtoLink = `mailto:info@andreacomolli.it?subject=${encodeURIComponent(oggetto)}&body=${encodeURIComponent(corpoEmail)}`;
         window.location.href = mailtoLink;
     });
 }
-document.getElementById('current-year').textContent = new Date().getFullYear();
+
+const yearElem = document.getElementById('current-year');
+if(yearElem) {
+    yearElem.textContent = new Date().getFullYear();
+}
